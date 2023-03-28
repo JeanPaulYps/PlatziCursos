@@ -1,0 +1,3 @@
+(() => {
+  let myDynamicVar: any;
+})()
