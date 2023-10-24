@@ -1,0 +1,91 @@
+.main {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: lato;
+  font-size: 1.4rem;
+}
+
+.product__error {
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+  display: block;
+}
+
+.product__error:visited {
+  color: black;
+}
+
+.product__basicInformation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product__information * {
+  margin-bottom: 10px;
+}
+
+.product__name {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.product__price {
+  font-size: 1.6rem;
+}
+
+.product__sku {
+  background-color: lightgray;
+  color: gray;
+  font-size: 1.4rem;
+  width: auto;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.product__aboutHeading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product__information {
+  margin-bottom: 20px;
+}
+
+.product__divider {
+  color: lightgray;
+  margin: 10px 0;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.table th,
+.table td {
+  height: 30px;
+  border: 1px solid lightgray;
+  padding: 15px;
+}
+
+.table td:nth-child(n + 1) {
+  border-top: none;
+}
+
+.table tr > :nth-child(n + 2) {
+  border-left: none;
+}
+
+.table th {
+  background-color: lightgray;
+  text-align: left;
+}
+
+.table tr > td:nth-child(1) {
+  font-weight: bold;
+}
