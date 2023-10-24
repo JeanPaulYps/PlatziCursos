@@ -1,19 +1,37 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
+import styles from './style.module.css'
+import Image from 'next/image'
 
 function Navbar() {
   return (
-    <nav>
-      <ul>
+    <nav className={styles.navigation__container}>
+      <ul className={styles.navigation__list}>
         <li>
-          <Link href="/">Home</Link>
+          <Image
+            src={'/icons/avocado.svg'}
+            alt="Avocado Icon"
+            width={64}
+            height={64}
+          />
+          <Link href="/" className={styles.navigation__link}>
+            Avo Store
+          </Link>
         </li>
         <li>
-          <Link href="/about">About</Link>
+          <Image
+            src={'/icons/basket.svg'}
+            alt="Avocado Icon"
+            width={64}
+            height={64}
+          />
+          <Link href="/about" className={styles.navigation__link}>
+            Shopping cart
+          </Link>
         </li>
       </ul>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

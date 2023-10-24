@@ -1,0 +1,34 @@
+.card__container {
+  width: 337px;
+  border: 4px solid gray;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.card__avocadoName:visited {
+  color: black;
+}
+
+.card__avocadoPrice:visited {
+  color: black;
+}
+
+.card__avocadoName {
+  font-size: 1.8rem;
+  color: black;
+}
+
+.card__avocadoPrice {
+  font-size: 1.6rem;
+  color: black;
+}
+
+.card__avocadoInformation {
+  border-top: 2px solid gray;
+  padding: 10px 20px;
+}
+
+.card__avocadoImage {
+  border-radius: 10px 10px 0 0;
+  padding: 0 10px;
+}

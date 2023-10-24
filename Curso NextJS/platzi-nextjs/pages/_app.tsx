@@ -1,5 +1,7 @@
 import type { AppProps } from 'next/app'
 import Layout from '@components/Layout'
+import './global.css'
+import "@fontsource/lato"
 
 
 export default function MyApp({ Component, pageProps }: AppProps) {

@@ -1,0 +1,18 @@
+.home {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.home__title {
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.home__avocadoList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 10px;
+  justify-content: space-evenly;
+}
