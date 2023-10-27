@@ -68,7 +68,9 @@ function ProductItem({ avocado }: { avocado: TProduct }) {
       <hr className={styles.product__divider} />
       <table className={styles.table}>
         <thead>
-          <th colSpan={2}>Attributes</th>
+          <tr>
+            <th colSpan={2}>Attributes</th>
+          </tr>
         </thead>
         <tbody>
           <tr>

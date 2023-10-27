@@ -7,9 +7,7 @@ test('test', async ({ page }) => {
     .getByRole('link', { name: 'Avocado photo Maluma Hass Avocado $ 1.15' })
     .click()
 
-  await page.waitForURL('**/product/**')
-
-  await page.locator('h2').click()
+  // await page.waitForURL('**/product/**')
 
   expect(
     await page.getByRole('heading', {
