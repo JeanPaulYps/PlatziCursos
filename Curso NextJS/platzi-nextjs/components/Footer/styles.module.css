@@ -1,0 +1,30 @@
+.footer {
+  font-size: 1.6rem;
+  border-top: 1px solid lightgray;
+  padding: 25px 0;
+  width: 100%;
+}
+
+.footer__textContainer {
+  flex-direction: row;
+  max-width: 700px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.footer__section {
+  width: 33%;
+}
+
+.footer__section ul {
+  list-style-type: none;
+}
+
+.footer__socialLink {
+  display: inline;
+}
+
+.footer__section ul a,
+.footer__section ul a:visited {
+  color: #4183c4;
+}

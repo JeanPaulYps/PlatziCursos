@@ -1,13 +1,14 @@
 import React, { ComponentProps, ReactNode } from 'react'
 import Navbar from '@components/Navbar'
-// import styles from './style.module.css'
+import Footer from '@components/Footer'
+import styles from './styles.module.css'
 
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Navbar />
       {children}
-      <footer>This is the footer</footer>
+      <Footer />
     </div>
   )
 }
