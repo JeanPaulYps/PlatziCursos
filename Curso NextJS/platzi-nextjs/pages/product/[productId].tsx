@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 import styles from './styles.module.css'
+import { useShoppingCart } from 'store/shoppingCart'
 
 export const getStaticPaths = async () => {
   const { data: productList }: { data: TProduct[] } = await fetch(
@@ -37,6 +38,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 function ProductItem({ avocado }: { avocado: TProduct }) {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const addProductToShoppingCart = useShoppingCart(
+    (state) => state.addProductToShoppingCart
+  )
   return (
     <main className={styles.main}>
       <div className={styles.product__basicInformation}>
@@ -50,14 +55,23 @@ function ProductItem({ avocado }: { avocado: TProduct }) {
           <p className={styles.product__name}>{avocado?.name}</p>
           <p className={styles.product__price}>$ {avocado?.price}</p>
           <p className={styles.product__sku}>SKU: {avocado?.sku}</p>
-          <form>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault()
+              const quantity = parseInt(inputRef.current?.value ?? '0')
+              console.log(quantity)
+              addProductToShoppingCart(avocado, quantity)
+            }}
+          >
             <input
               type={'number'}
               name="Avocado number"
               defaultValue={1}
               min={0}
+              ref={inputRef}
+              id="quantityInput"
             />
-            <button>Add to cart</button>
+            <button type="submit">Add to cart</button>
           </form>
         </div>
       </div>

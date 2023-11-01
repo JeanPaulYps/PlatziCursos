@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from './style.module.css'
 import Image from 'next/image'
 
-function Navbar() {
+function Navbar({ shoppingCartItems }: { shoppingCartItems: number }) {
   return (
     <nav className={styles.navigation__container}>
       <ul className={styles.navigation__list}>
@@ -25,8 +25,12 @@ function Navbar() {
             width={64}
             height={64}
           />
-          <Link href="/about" className={styles.navigation__link}>
-            Shopping cart
+          <Link
+            href="/about"
+            className={styles.navigation__link}
+            id="shoppingLink"
+          >
+            Shopping cart ({shoppingCartItems})
           </Link>
         </li>
       </ul>
