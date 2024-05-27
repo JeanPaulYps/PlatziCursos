@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html {
+      background-color: lightcyan;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: content-box;
+    }
+
+
+    .card {
+      font-family: Arial;
+    }
+
+    .card__background {
+      background-color: #47559f;
+      position: relative;
+    }
+
+    .card__photo {
+      width: 300px;
+      position: absolute;
+      bottom: -50px;
+      right: 20px;
+    }
+
+    .card__brand {
+      font-size: 72px;
+      font-weight: bold;
+      color: #3e4c94;
+      padding: 20px 0 0 20px;
+    }
+
+    .card__information {
+      background-color: white;
+    }
+
+    .card__information h3 {
+      display: inline;
+      margin-right: 10px;
+      font-size: 30px;
+    }
+
+    .card__information span {
+      display: inline;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: gray;
+    }
+
+    .card__description {
+      margin: 20px 0;
+    }
+
+    .card__purchaseInformation {
+      display: flex;
+      align-items: center;
+    }
+
+    .card__price {
+      margin-right: auto;
+      font-size: 30px;
+      font-weight: bold;
+      color: gray;
+    }
+
+    .card__button {
+      background-color: #4c55a0;
+      color: white;
+      height: 30px;
+      border-radius: 25px;
+      padding: 10px 30px;
+      border: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .card__button:hover {
+      cursor: pointer;
+    }
+
+    @media (max-width: 999px) {
+      .card__background {
+        height: 200px;
+      }
+
+      .card__information {
+        /* margin-top: 20px; */
+        padding: 30px 20px 10px;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .card {
+        display: flex;
+        flex-wrap: nowrap;
+        max-width: 900px;
+        height: 450px;
+      }
+
+      .card__background {
+        width: 400px;
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+
+      .card__photo {
+        width: 600px;
+        transform: rotate(-30deg);
+        right: -50px;
+        bottom: 0px;
+
+
+      }
+
+      .card__information {
+        flex-grow: 0;
+        padding: 10px 20px;
+      }
+
+      .card__information span {
+        display: block;
+      }
+
+      .card__description {
+        padding-left: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="card" style="margin: 0 auto;">
+    <div class="card__background">
+      <p class="card__brand"> Brand </p>
+      <img src="./imgs/nike-blue.png" class="card__photo" />
+    </div>
+    <div class="card__information">
+      <h3> Nike Zoom 2023</h3><span>Running collection</span>
+      <p class="card__description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia a nibh at
+        euismod. Mauris egestas volutpat
+        nulla. Nulla lorem lectus, imperdiet non sem semper, tincidunt suscipit ex. Aliquam sed tincidunt nunc, eget
+        fermentum leo. Integer in egestas neque, ac semper quam. Praesent quis pretium tortor. Mauris tempus risus eget
+        molestie interdum. Nulla vitae tempus mi. Etiam mattis arcu quis fringilla elementum. Etiam et leo venenatis,
+        molestie erat et, volutpat quam. Quisque hendrerit faucibus pulvinar. Class aptent taciti sociosqu ad litora
+        torquent per conubia nostra, per inceptos himenaeos. </p>
+      <div class="card__purchaseInformation">
+        <p class="card__price">$2,500 </p>
+        <button class="card__button">BUY NOW</button>
+      </div>
+    </div>
+  </div> -->
+  <product-card brandName="Nike" productImage="./imgs/nike-blue.png" productName="Nike Zoom 2023"
+    productCollection="Running collection" productDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia a nibh at
+    euismod. Mauris egestas volutpat
+    nulla. Nulla lorem lectus, imperdiet non sem semper, tincidunt suscipit ex. Aliquam sed tincidunt nunc, eget
+    fermentum leo. Integer in egestas neque, ac semper quam. Praesent quis pretium tortor. Mauris tempus risus eget
+    molestie interdum. Nulla vitae tempus mi. Etiam mattis arcu quis fringilla elementum. Etiam et leo venenatis,
+    molestie erat et, volutpat quam. Quisque hendrerit faucibus pulvinar. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos." productPrice="2500" buttonCTA="BUY NOW"/>
+  <script type="module" src="./app.js"></script>
+</body>
+
+</html>
