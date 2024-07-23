@@ -1,3 +1,5 @@
+package Models;
+
 public abstract class User {
     private int id;
     private String name, email, address, phoneNumber;
@@ -54,6 +56,8 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "User: " + name + "\nEmail: " + email + "\nAddress: " + address + "Phone: " + phoneNumber;
+        return "Models.User: " + name + "\nEmail: " + email + "\nAddress: " + address + "Phone: " + phoneNumber;
     }
+
+    public abstract void showDataUser();
 }

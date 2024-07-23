@@ -1,3 +1,5 @@
+package Models;
+
 import java.util.Date;
 
 public class AppointmentNurse implements ISchedulable {
@@ -48,7 +50,7 @@ public class AppointmentNurse implements ISchedulable {
     }
 
     @Override
-    public void Schedule(Date date, String time) {
+    public void schedule(Date date, String time) {
 
     }
 }
