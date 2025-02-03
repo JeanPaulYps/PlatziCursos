@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Hola este es mi primer proyecto</h1>
+  <h2>{{ welcome }}</h2>
+  <p>Total: {{tasks().length}}</p>
+  <ul>
+    <li *ngFor="let task of tasks(); index as i">{{ i + 1 }} {{task}}</li>
+  </ul>
+  <hr>
+  <h2>{{ 'Hola'.repeat(4) }}</h2>
+  <p>La suma 3 + 3 es {{ 3 + 3 }}</p>
+  <hr>
+  <img [src]="person.avatar" alt="">
+  <input type="text" [value]="person.age">
+  <button [disabled]="disabled"> Click me</button>
+  <p>person: {{ person.name }} </p>
+  <hr>
+  <button (click)="clickHandler()">Click me</button>
+  <button (dbclick)="clickHandler()">Click me</button>
+  <p>(change)</p>
+  <input type="number" [value]="person.age" (change)="changeHandler($event)" />
+  <input type="text" [value]="name()" (change)="changeHandler($event)" />
+  <p>(keydown)</p>
+  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+  <hr>
+  <input type="color" [formControl]="colorControl">
+  <p>Color: {{ colorControl.value }}</p>
+  <hr>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorControl.value" />
+    </g>
+  </svg>
+  <hr>
+  <input type="number" [formControl]="widthControl">
+  <span class="box" [style.width.px]="widthControl.value"></span>
+  <hr>
+  <p>
+    <input type="text" [formControl]="nameControl">
+    <br>
+    <span class="message-error" [class.active]="nameControl.invalid && nameControl.touched">Nombre Incorrecto</span>
+  </p>
+  <p>
+    <input type="text">
+  </p>
+</div>
