@@ -5,4 +5,12 @@ export interface Product {
   price: number,
   images: string[],
   creationAt: string,
+  description: string,
+  category: {
+    name: string,
+    id: number,
+    image: string,
+    creationAt: string,
+    updatedAt: string,
+  }
 }

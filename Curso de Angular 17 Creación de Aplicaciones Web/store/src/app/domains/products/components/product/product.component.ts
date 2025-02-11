@@ -3,11 +3,12 @@ import { Product } from '@/shared/models/product.model';
 import { CommonModule, CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { ReversePipe } from '@/shared/pipes/reverse.pipe';
 import { TimeAgoPipe } from '@/shared/pipes/time-ago.pipe';
+import { RouterLinkWithHref } from '@angular/router';
 
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule, UpperCasePipe, CurrencyPipe, DatePipe, ReversePipe, TimeAgoPipe],
+  imports: [CommonModule, UpperCasePipe, CurrencyPipe, DatePipe, ReversePipe, TimeAgoPipe, RouterLinkWithHref],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
