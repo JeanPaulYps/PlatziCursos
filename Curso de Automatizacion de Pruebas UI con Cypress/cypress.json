@@ -1,0 +1,12 @@
+{
+  "baseUrl": "https://demoqa.com/",
+  "blockHosts": [
+    "www.googletagmanager.com",
+    "*g.doubleclick.net",
+    "*googlesyndication.com",
+    "*gum.criteo.com",
+    "*.googleadservices.com",
+    "serving.stat-rock.com",
+    "pagead2.googlesyndication.com"
+  ]
+}

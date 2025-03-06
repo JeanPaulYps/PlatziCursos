@@ -1,0 +1,21 @@
+{
+  "name": "curso-de-automatizacion-de-pruebas-ui-con-cypress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:headless": "cypress run",
+    "cy:headless:chrome": "cypress run --browser chrome",
+    "cy:headless:firefox": "cypress run --browser firefox"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cypress": "^9.5.1",
+    "prettier": "^3.5.3"
+  }
+}
