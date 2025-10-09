@@ -10,6 +10,7 @@ import { WebsiteModule } from './website/website.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { SwiperModule } from 'swiper/angular';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SwiperModule } from 'swiper/angular';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    WebsiteModule
+    WebsiteModule,
+    QuicklinkModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true },
