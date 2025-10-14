@@ -1,17 +1,8 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './website/pages/home/home.component';
-import { CategoryComponent } from './website/pages/category/category.component';
-import { LoginComponent } from './website/pages/login/login.component';
+import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { RegisterComponent } from './website/pages/register/register.component';
-import { RecoveryComponent } from './website/pages/recovery/recovery.component';
-import { MyCartComponent } from './website/pages/my-cart/my-cart.component';
-import { ProductDetailComponent } from './website/pages/product-detail/product-detail.component';
-import { LayoutComponent } from './website/components/layout/layout.component';
-import { CmsRoutingModule } from './cms/cms-routing.module';
-import { CustomPreloadService } from './services/custom-preload.service';
 import { QuicklinkStrategy } from 'ngx-quicklink';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
  {
@@ -23,6 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'cms',
+    canActivate: [AdminGuard],
     loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule)
   },
   {

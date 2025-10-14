@@ -12,6 +12,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { SwiperModule } from 'swiper/angular';
 import { SharedModule } from '../shared/shared.module';
 import { QuicklinkModule } from 'ngx-quicklink';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { QuicklinkModule } from 'ngx-quicklink';
     MyCartComponent,
     ProductDetailComponent,
     LayoutComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule, 
