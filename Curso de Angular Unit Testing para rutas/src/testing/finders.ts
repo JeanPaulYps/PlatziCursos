@@ -3,6 +3,7 @@ import { ComponentFixture } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 
 export function getText<T>(fixture: ComponentFixture<T>, testId: string) {
+  console.log('Test id', testId);
   const debugElement = queryById(fixture, testId);
   const element: HTMLElement = debugElement.nativeElement;
   return element.textContent;
