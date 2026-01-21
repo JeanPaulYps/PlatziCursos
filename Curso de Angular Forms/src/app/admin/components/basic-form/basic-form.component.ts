@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-form',
@@ -7,43 +7,43 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./basic-form.component.scss']
 })
 export class BasicFormComponent implements OnInit {
-
-  // nameField = new FormControl('', [Validators.required, Validators.maxLength(10)]);
-  // emailField = new FormControl('');
-  // phoneField = new FormControl('');
-  // colorField = new FormControl('#fff');
-  // dateField = new FormControl('');
-  // ageField = new FormControl(12);
-  // categoryField = new FormControl('');
-  // tagField = new FormControl('');
-
-  // agreeField = new FormControl(false);
-  // genderField = new FormControl();
-  // zoneField = new FormControl();
-
-  form = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    email: new FormControl(''),
-    phone: new FormControl(''),
-    color: new FormControl('#fff'),
-    date: new FormControl(''),
-    age: new FormControl(12),
-    category: new FormControl(''),
-    tag: new FormControl(''),
-    agree: new FormControl(false),
-    gender: new FormControl(),
-    zone: new FormControl()
-  })
+  form !: FormGroup; 
 
   constructor(
-  ) { }
+    private formBuilder: FormBuilder
+  ) { 
+    this.buildForm();
+  }
+
+  private buildForm () {
+    this.form = this.formBuilder.group({
+        fullName: this.formBuilder.group({
+          name: ['', [Validators.required, Validators.maxLength(30), Validators.pattern('^[a-zA-Z ]+$')]],
+          lastName: ['', [Validators.required, Validators.maxLength(30), Validators.pattern('^[a-zA-Z ]+$')]]
+        }),
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', [Validators.required]],
+        color: ['#fff'],
+        date: [''],
+        age: [18, [Validators.required, Validators.min(18), Validators.max(100)]],
+        category: [''],
+        tag: [''],
+        agree: [false, [Validators.requiredTrue]],
+        gender: [''],
+        zone: ['']
+      })
+  }
 
   ngOnInit(): void {
     this.nameField?.valueChanges.subscribe(value => console.log(value))
   }
 
   save(event) {
-    console.log(this.form.value)
+    if (this.form.valid) {
+      console.log(this.form.value)
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
   logNameValue () {
@@ -59,7 +59,11 @@ export class BasicFormComponent implements OnInit {
   }
   
   get nameField () {
-    return this.form.get('name');
+    return this.form.get('fullName.name');
+  }
+
+  get lastNameField() {
+    return this.form.get('fullName.lastName');
   }
 
   get emailField () {

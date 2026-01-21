@@ -1,26 +1,54 @@
 <form [formGroup]="form" (ngSubmit)="save($event)">
-  <div>
-    <p>Name: {{nameField.valid}} </p>
-    <input
-      type="text"
-      formControlName="name"
-      [class.is-valid] = "isNameFieldValid()"
-      [class.is-invalid] = "isNameFieldInvalid()"
-    />
-    <button [disabled]="isNameFieldInvalid()" (click)="logNameValue()">Get value</button>
-    <div class="messages" [class.active]="isNameFieldInvalid">
-      <p *ngIf="nameField.hasError('required') && nameField.touched"><strong>Este campo es requerido</strong></p>
-      <p *ngIf="nameField.hasError('maxlength') && nameField.touched"><strong>Este campo admite maximo 10 caracteres</strong></p>
+  <div formGroupName="fullName">
+    <div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name: </mat-label>
+        <input matInput placeholder="Enter your name" required formControlName="name">
+        <mat-icon matSuffix *ngIf="isNameFieldValid()">done</mat-icon>
+        <mat-icon matSuffix *ngIf="isNameFieldInvalid()">close</mat-icon>
+        <div class="messages" [class.active]="isNameFieldInvalid">
+          <mat-error *ngIf="nameField.hasError('required') && nameField.touched">
+            <strong>Este campo es requerido</strong>
+          </mat-error>
+          <mat-error *ngIf="nameField.hasError('maxlength') && nameField.touched">
+            <strong>Este campo admite maximo 10 caracteres</strong>
+          </mat-error>
+          <mat-error *ngIf="nameField.hasError('pattern') && nameField.touched">
+            <strong>No debe tener caracteres</strong>
+          </mat-error>
+        </div>
+      </mat-form-field>
 
     </div>
+    <div>
+      <p>LastName: {{lastNameField.valid}} </p>
+      <input type="text" formControlName="lastName" />
+      <div class="messages" [class.active]="lastNameField.touched && lastNameField.invalid">
+        <p *ngIf="lastNameField.hasError('required') && lastNameField.touched"><strong>Este campo es requerido</strong>
+        </p>
+        <p *ngIf="lastNameField.hasError('maxlength') && lastNameField.touched"><strong>Este campo admite maximo 10
+            caracteres</strong></p>
+        <p *ngIf="lastNameField.hasError('pattern') && lastNameField.touched"><strong>No debe tener caracteres</strong>
+        </p>
+      </div>
+    </div>
+
   </div>
   <div>
     <p>Email: {{emailField.value }}</p>
     <input type="email" formControlName="email">
+    <div class="messages" [class.active]="emailField.touched && emailField.invalid">
+      <p *ngIf="emailField.hasError('required')"><strong>Este campo es requerido</strong></p>
+      <p *ngIf="emailField.hasError('email')"><strong>El correo debe ser valido</strong></p>
+    </div>
   </div>
   <div>
     <p>Phone: {{phoneField.value }}</p>
     <input type="tel" formControlName="phone">
+    <div class="phoneMessages" [class.active]="phoneField.touched && phoneField.invalid">
+      <p *ngIf="nameField.hasError('required') && nameField.touched"><strong>Este campo es requerido</strong></p>
+    </div>
   </div>
   <div>
     <p>Color: {{colorField.value }}</p>
@@ -33,6 +61,10 @@
   <div>
     <p>Age: {{ageField.value }}</p>
     <input type="number" formControlName="age">
+    <div class="messages" [class.active]="ageField.touched && ageField.invalid">
+      <p *ngIf="ageField.hasError('required')"><strong>Este campo es requerido</strong></p>
+      <p *ngIf="ageField.hasError('min')"><strong>Debe ser mayor de edad</strong></p>
+    </div>
   </div>
   <div>
     <p>Category: {{categoryField.value}}</p>
