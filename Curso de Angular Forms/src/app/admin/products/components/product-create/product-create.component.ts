@@ -9,6 +9,8 @@ import { MyValidators } from './../../../../utils/validators';
 import { ProductsService } from './../../../../core/services/products/products.service';
 
 import { Observable } from 'rxjs';
+import {CategoryService} from '../../../../core/services/categories.service';
+import {Category} from '../../../../core/models/category.model';
 
 @Component({
   selector: 'app-product-create',
@@ -19,17 +21,30 @@ export class ProductCreateComponent implements OnInit {
 
   form: FormGroup;
   image$: Observable<any>;
+  categories: Category[];
 
   constructor(
     private formBuilder: FormBuilder,
     private productsService: ProductsService,
     private router: Router,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private categoryService: CategoryService
   ) {
     this.buildForm();
   }
 
   ngOnInit() {
+    this.getCategories();
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      price: ['', [Validators.required, MyValidators.isPriceValid]],
+      image: ['', [Validators.required]],
+      category_id: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
+    });
   }
 
   saveProduct(event: Event) {
@@ -67,18 +82,14 @@ export class ProductCreateComponent implements OnInit {
     return this.form.get('name');
   }
 
-  private buildForm() {
-    this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(4)]],
-      price: ['', [Validators.required, MyValidators.isPriceValid]],
-      image: ['', [Validators.required]],
-      category_id: ['', [Validators.required]],
-      description: ['', [Validators.required, Validators.minLength(10)]],
-    });
-  }
-
   get priceField() {
     return this.form.get('price');
+  }
+
+  private getCategories() {
+    this.categoryService.getAllCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
 }

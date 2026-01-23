@@ -15,7 +15,6 @@ import {Category} from '../../../../core/models/category.model';
 })
 export class CategoryFormComponent implements OnInit {
   form!: FormGroup;
-  categoryId: string;
   isNew = true;
 
   @Input()

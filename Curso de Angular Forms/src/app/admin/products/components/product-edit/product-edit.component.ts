@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { MyValidators } from './../../../../utils/validators';
 import { ProductsService } from './../../../../core/services/products/products.service';
+import {CategoryService} from '../../../../core/services/categories.service';
+import {Category} from '../../../../core/models/category.model';
 
 @Component({
   selector: 'app-product-edit',
@@ -11,15 +13,16 @@ import { ProductsService } from './../../../../core/services/products/products.s
   styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
-
   form: FormGroup;
   id: string;
+  categories: Category[];
 
   constructor(
     private formBuilder: FormBuilder,
     private productsService: ProductsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private categoryService: CategoryService
   ) {
     this.buildForm();
   }
@@ -29,9 +32,10 @@ export class ProductEditComponent implements OnInit {
       this.id = params.id;
       this.productsService.getProduct(this.id)
       .subscribe(product => {
-        this.form.patchValue(product);
+        this.form.patchValue({...product, name: product.title, category_id: product.category.id });
       });
     });
+    this.getCategories();
   }
 
   saveProduct(event: Event) {
@@ -48,16 +52,26 @@ export class ProductEditComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      id: ['', [Validators.required]],
-      title: ['', [Validators.required]],
+      name: ['', [Validators.required]],
       price: ['', [Validators.required, MyValidators.isPriceValid]],
       image: [''],
-      description: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
+      category: ['', [Validators.required]]
     });
   }
 
   get priceField() {
     return this.form.get('price');
+  }
+
+  private getCategories() {
+    this.categoryService.getAllCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
+  }
+
+  compareCategories(firstCategory: Category, secondCategory: Category) {
+    return firstCategory && secondCategory ? firstCategory.id === secondCategory.id : true;
   }
 
 }
