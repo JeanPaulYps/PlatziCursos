@@ -1,0 +1,13 @@
+<div>
+  <input type="search" [formControl]="searchField">
+</div>
+<p>
+  Current Value:
+  {{ searchField.value }}
+</p>
+
+<div class="images-grid">
+  <div class="image" *ngFor="let image of images">
+    <img [src]="image.urls.regular" alt="">
+  </div>
+</div>
