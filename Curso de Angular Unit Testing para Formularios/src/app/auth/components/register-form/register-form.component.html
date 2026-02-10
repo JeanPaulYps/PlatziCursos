@@ -34,9 +34,12 @@
             [attr.aria-invalid]="emailField?.touched ? emailField?.invalid : ''"
           />
           <ng-container *ngIf="emailField?.touched && emailField?.errors">
-            <small *ngIf="emailField?.hasError('required')">*Required</small>
-            <small *ngIf="emailField?.hasError('email')"
+            <small *ngIf="emailField?.hasError('required')" data-testid="emailField-required">*Required</small>
+            <small *ngIf="emailField?.hasError('email')" data-testid="emailField-email"
               >*It's not a email</small
+            >
+            <small *ngIf="emailField?.hasError('not_available')" data-testid="emailField-duplicated"
+            >This email is already registered</small
             >
           </ng-container>
         </label>
@@ -47,7 +50,7 @@
         <input
           type="password"
           id="password"
-          name="email"
+          name="password"
           placeholder="Password"
           formControlName="password"
           [attr.aria-invalid]="
@@ -70,7 +73,7 @@
         <input
           type="password"
           id="confirmPassword"
-          name="email"
+          name="confirmPassword"
           placeholder="Confirm password"
           formControlName="confirmPassword"
           [attr.aria-invalid]="
@@ -98,7 +101,7 @@
           I agree to the Terms and Conditions
         </label>
       </fieldset>
-      <button type="submit">Register</button>
+      <button type="submit" data-testid="btn-submit">Register</button>
     </div>
   </form>
 </section>

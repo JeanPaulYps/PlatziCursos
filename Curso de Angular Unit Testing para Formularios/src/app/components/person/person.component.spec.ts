@@ -5,6 +5,7 @@ import { Person } from './../../models/person';
 
 import { PersonComponent } from './person.component';
 import { first } from 'rxjs/operators';
+import {clickEvent} from "../../testing";
 
 describe('PersonComponent', () => {
   let component: PersonComponent;
@@ -91,7 +92,7 @@ describe('PersonComponent', () => {
     const buttonDe = debugElement.query(By.css('.btn-imc'));
     const buttonEl = buttonDe.nativeElement;
     // Act
-    buttonDe.triggerEventHandler('click', null);
+    clickEvent(fixture, '.btn-imc', false);
     fixture.detectChanges();
     // Assert
     expect(buttonEl.textContent).toContain(expectText);
@@ -124,7 +125,7 @@ describe('PersonComponent', () => {
     </app-person>`
 })
 class TestHostComponent {
-  person: Person = new Person('Nicolas', 'Molina', 28, 68, 1.65);;
+  person: Person = new Person('Nicolas', 'Molina', 28, 68, 1.65);
   selectedPerson: Person | undefined;
   onSelected(person: Person) {
     this.selectedPerson = person;

@@ -11,10 +11,17 @@ import { UsersService } from './../../../services/user.service';
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
+  status: 'loading' | 'success' | 'error' | 'init' = 'init';
+
+  constructor(
+    private fb: FormBuilder,
+    private usersService: UsersService
+  ) {}
+
   form = this.fb.group(
     {
       name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email], [MyValidators.validateEmailAsync(this.usersService)]],
       password: ['', [Validators.required, Validators.minLength(6), MyValidators.validPassword]],
       confirmPassword: ['', [Validators.required]],
       checkTerms: [false, [Validators.requiredTrue]],
@@ -24,20 +31,24 @@ export class RegisterFormComponent implements OnInit {
     }
   );
 
-  constructor(
-    private fb: FormBuilder,
-    private usersService: UsersService
-  ) {}
+
 
   ngOnInit(): void {}
 
   register(event: Event) {
     event.preventDefault();
     if (this.form.valid) {
+      this.status = 'loading';
       const value = this.form.value;
       this.usersService.create(value)
-      .subscribe((rta) => {
-        console.log(rta);
+      .subscribe({
+        next: (rta) => {
+          console.log(rta);
+          this.status = 'success';
+        },
+        error: () => {
+          this.status = 'error';
+        }
       });
     } else {
       this.form.markAllAsTouched();
