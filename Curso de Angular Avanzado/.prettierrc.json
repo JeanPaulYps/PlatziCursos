@@ -2,5 +2,19 @@
   "tabWidth": 2,
   "useTabs": false,
   "singleQuote": true,
-  "semi": true
+  "semi": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.component.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }
